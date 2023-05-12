@@ -42,11 +42,14 @@ async def channel_post(client: Client, message: Message):
 @Bot.on_message(filters.channel & filters.incoming & filters.chat(CHANNEL_ID))
 async def new_post(client: Client, message: Message):
 
-    if DISABLE_CHANNEL_BUTTON:
-        return
+    
 for msg in messages:
     media = msg.video or msg.document
     filename = media.file_name
+    
+    if DISABLE_CHANNEL_BUTTON:
+        return
+
     converted_id = message.id * abs(client.db_channel.id)
     string = f"get-{converted_id}"
     base64_string = await encode(string)
