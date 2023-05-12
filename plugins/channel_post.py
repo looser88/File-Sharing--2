@@ -32,11 +32,11 @@ async def channel_post(client: Client, message: Message):
 #   ptoday= today.strftime("%d - %m - %Y")
     ptomorrow = tomorrow.strftime("%d - %m - %Y")
 #   pweek = tomorrow.strftime("%A")
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔗Share URL", url=Tlink)]])
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("↔️Share URL", url=Tlink)]])
+    cap = "\n<b>▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞:- <b>{ptomorrow}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{Slink}\n{Slink}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1"
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("AShare URL", url=Tlink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("BShare URL", url=Tlink)]])
 
-    await reply_text.edit(f"{massage.document.file_name}\n<b>▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞:- <b>{ptomorrow}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{Slink}\n{Slink}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1", disable_web_page_preview = True)
-
+    await reply_text.edit({filename}, {cap}, disable_web_page_preview = True)
     if not DISABLE_CHANNEL_BUTTON:
         await post_message.edit_reply_markup(reply_markup)
 
@@ -45,14 +45,16 @@ async def new_post(client: Client, message: Message):
 
     if DISABLE_CHANNEL_BUTTON:
         return
-
+for msg in messages:
+    media = msg.video or msg.document
+    filename = media.file_name
     converted_id = message.id * abs(client.db_channel.id)
     string = f"get-{converted_id}"
     base64_string = await encode(string)
     Tlink = f"https://telegram.me/{client.username}?start={base64_string}"
     link = get_short(Tlink)
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔗Share URL", url=Tlink)]])
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("↔️Share URL", url=Tlink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("CShare URL", url=Tlink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("DShare URL", url=Tlink)]])
     
     try:
         await message.edit_reply_markup(reply_markup)
