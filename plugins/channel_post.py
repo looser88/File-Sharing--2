@@ -3,6 +3,7 @@
 import asyncio
 from pyrogram import filters, Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types.messages_and_media import message
 from pyrogram.errors import FloodWait
 from plugins.link_generator import get_short
 from bot import Bot
