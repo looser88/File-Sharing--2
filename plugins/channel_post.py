@@ -3,7 +3,6 @@
 import asyncio
 from pyrogram import filters, Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.types.messages_and_media import message
 from pyrogram.errors import FloodWait
 from plugins.link_generator import get_short
 from bot import Bot
@@ -35,11 +34,8 @@ async def channel_post(client: Client, message: Message):
 #   pweek = tomorrow.strftime("%A")
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("AShare URL", url=Tlink)]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("BShare URL", url=Tlink)]])
-    for msg in messages:
-        media = msg.video or msg.document
-        filename = media.file_name
     
-    await reply_text.edit(f"{filename}, ▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞:- <b>{ptomorrow}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{Slink}\n{Slink}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1",disable_web_page_preview = True)
+    await reply_text.edit(f" ▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞:- <b>{ptomorrow}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{Slink}\n{Slink}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1",disable_web_page_preview = True)
     if not DISABLE_CHANNEL_BUTTON:
         await post_message.edit_reply_markup(reply_markup)
 
