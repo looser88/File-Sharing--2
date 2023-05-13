@@ -35,7 +35,7 @@ async def channel_post(client: Client, message: Message):
 #   pweek = tomorrow.strftime("%A")
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("AShare URL", url=Tlink)]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("BShare URL", url=Tlink)]])
-    for msg in Message:
+    for msg in message:
         media = msg.video or msg.document
         filename = media.file_name
     
